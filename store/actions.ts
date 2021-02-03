@@ -19,3 +19,13 @@ export const fetchUserFailure = (error, isServer) => ({
   type: types.FETCH_USER_FAILURE,
   payload: { error, isServer },
 })
+
+export const setStartLocation = (startLocation) => ({
+  type: types.SET_START_LOCATION,
+  payload: { startLocation },
+})
+
+export const setEndLocation = (endLocation) => ({
+  type: types.SET_START_LOCATION,
+  payload: { endLocation },
+})

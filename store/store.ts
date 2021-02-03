@@ -12,6 +12,8 @@ const INITIAL_STATE = {
   character: {},
   isFetchedOnServer: false,
   error: null,
+  formValues: {},
+  message: ""
 }
 
 function reducer(state = INITIAL_STATE, { type, payload }) {
