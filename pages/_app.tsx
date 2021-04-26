@@ -1,21 +1,24 @@
 import React from "react";
-import DestinationForm from "../components/DestinationForm";
 import Head from "next/head";
 import "../styles/globals.css";
 import styles from "../styles/App.module.css";
+import { DestinationForm } from "../components/DestinationForm";
+import { ChakraProvider, Heading } from "@chakra-ui/react"
+import { RouteResult } from "../components/RouteResult";
 
-export default function RoutesApp({ Component, pageProps }) {
+
+export default function RoutesApp() {
   return (
-    <div>
+    <ChakraProvider>
       <Head>
         <title>THAT'S THE WAY</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.container}>
         <div className="App">
-          <h1>Where shall it go?</h1>
+          <Heading mb="6">Where shall it go?</Heading>
           <DestinationForm />
-          <Component {...pageProps} />
+          <RouteResult />
         </div>
         <footer className={styles.footer}>
           <a
@@ -33,6 +36,6 @@ export default function RoutesApp({ Component, pageProps }) {
           </a>
         </footer>
       </div>
-    </div>
+      </ChakraProvider>
   );
 }

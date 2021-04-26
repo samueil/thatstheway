@@ -1,12 +1,13 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
+import { Button, Flex, Input, FormLabel, FormControl } from '@chakra-ui/react'
 
-function submit({startLocation, endLocation}) {
+
+const submit = ({startLocation, endLocation}) => {
   console.log("startLocation: "+ startLocation + "\nendLocation: " + endLocation )
 }
 
-function DestinationForm({ startLocation = "", endLocation = "", onSubmit = submit }) {
-  function handleSubmit(e) {
+export const DestinationForm = ({ onSubmit = submit }) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const { startLocation, endLocation } = e.target.elements;
     onSubmit({
@@ -16,36 +17,38 @@ function DestinationForm({ startLocation = "", endLocation = "", onSubmit = subm
   }
 
   return (
-    <div>
       <form onSubmit={handleSubmit}>
-        <div className="floatcontainer">
-          <label className="label" htmlFor="startLocation">
-            Start:
-          </label>
-          <input
+      <FormControl id="startLocation">
+        <Flex direction="row" alignItems="center">
+          <FormLabel as="legend"  htmlFor="startLocation" width="4rem" textAlign="right">
+            From:
+          </FormLabel>
+          <Input
             type="startLocation"
             name="startLocation"
-            id="startLocation"
             title="startLocation"
+            placeholder="Start"
             required
           />
-        </div>
-        <div className="floatcontainer">
-          <label className="label" htmlFor="endLocation">
-            Destination:
-          </label>
-          <input
+        </Flex>
+        </FormControl>
+        <FormControl id="endLocation">
+        <Flex direction="row" alignItems="center">
+          <FormLabel as="legend" htmlFor="endLocation" width="4rem" textAlign="right">
+            To:
+          </FormLabel>
+          <Input
             type="endLocation"
             name="endLocation"
-            id="endLocation"
             title="endLocation"
+            placeholder="Destination"
             required
           />
-        </div>
-        <button type="submit">Show Route</button>
+        </Flex>
+        <Flex direction="row" alignItems="center">
+        <Button type="submit" ml="4rem" mt="4" width="100%">Show Route</Button>
+        </Flex>
+      </FormControl>
       </form>
-    </div>
   );
 }
-
-export default DestinationForm;
